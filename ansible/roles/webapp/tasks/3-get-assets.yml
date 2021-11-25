@@ -1,0 +1,23 @@
+---
+- name: Example clone of a single branch
+  git:
+    repo: https://github.com/d-ries/2TIN_ResearchProject.git
+    dest: "{{assets}}"
+    single_branch: yes
+    version: master
+    force: yes
+
+#replace the config file with the config file that contains the db credentials
+- name: replace config.php file for correct configuration
+  template:
+    src: template/config.php.j2
+    dest: "{{php_config_file}}"
+    force: yes
+
+- name: copy composer json 
+  copy:
+    src: files/{{item}}
+    dest: "{{assets}}"
+    force: yes
+  with_items:
+    - composer.json

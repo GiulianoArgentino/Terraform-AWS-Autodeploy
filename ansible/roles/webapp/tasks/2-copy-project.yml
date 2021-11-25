@@ -1,0 +1,12 @@
+---
+#copy the docker files with the docker-compose file to build the webapplication
+- name: copy dockerfiles 
+  copy:
+    src: files/{{item}}
+    dest: "{{webapp_project_path}}"
+    force: yes
+  with_items:
+    - nginx.Dockerfile
+    - php.Dockerfile
+    - default.conf
+    - docker-compose.yml

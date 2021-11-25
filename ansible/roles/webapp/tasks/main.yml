@@ -1,0 +1,7 @@
+---
+# tasks file for docker-build
+- include_tasks: 1-create-directories.yml
+- include_tasks: 2-copy-project.yml
+- include_tasks: 3-get-assets.yml
+- include_tasks: 4-deploy-webapp.yml
+- include_tasks: 5-database-connection.yml

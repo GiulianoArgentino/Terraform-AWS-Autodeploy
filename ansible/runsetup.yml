@@ -1,0 +1,12 @@
+---
+- name: playbook for docker
+  hosts: all
+  become: yes
+  vars_files:
+   - ./roles/webapp/vars/secrets.yml
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles:
+    - role: install requirements
+    - role: webapp

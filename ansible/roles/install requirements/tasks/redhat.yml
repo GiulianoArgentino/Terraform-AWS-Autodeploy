@@ -1,0 +1,37 @@
+---
+# docker install red-hat
+- name: update system
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install a list of packages with a list variable
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - pip
+    - git
+    - mysql
+    state: present
+
+- name: Install docker python package
+  pip:
+     name: "{{ packages }}"
+  vars:
+    packages:
+    - docker
+    - docker-compose
+
+
+- name: enable the amazon extras repo
+  shell: yum-config-manager --enable extras
+
+- name: Install docker with amazon-linux-extras packages
+  shell: amazon-linux-extras install docker -y
+
+- name: Enable Docker  service at startup
+  service:
+    name: docker
+    state: started
+    enabled: yes

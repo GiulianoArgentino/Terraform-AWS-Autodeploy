@@ -1,0 +1,10 @@
+---
+#copy the dbcredentials file with the output variables from terrafom to connect to the database.
+- name: create db_creds config-file used for logging in without inputting credentials
+  template:
+    src: template/dbcreds.j2
+    dest: "{{dbcreds}}"
+
+#run the employees sql query on the rds from the webapplication 
+- name: Run the sql-script to create the database "employees"
+  shell: mysql --defaults-extra-file="{{dbcreds}}" < "{{employees_sql}}"

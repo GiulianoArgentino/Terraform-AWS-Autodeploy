@@ -1,0 +1,20 @@
+---
+- name: Creates directory
+  file:
+    path: "{{assets}}"
+    state: directory
+    mode: 0755
+    recurse: yes
+    force: no
+    owner: "{{owner}}"
+    group: "{{group}}"
+
+- name: Creates webapp map to build docker image
+  file:
+    path: "{{webapp_project_path}}"
+    state: directory
+    mode: "u=rwx,g=rw,o=rw"
+    recurse: yes
+    force: no
+    owner: "{{owner}}"
+    group: "{{group}}"

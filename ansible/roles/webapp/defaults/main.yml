@@ -1,0 +1,9 @@
+---
+ webapp_project_path: /home/ec2-user/web-app/
+ assets: /home/ec2-user/html
+ php_config_file: /home/ec2-user/html/config.php
+ index_php_file: /home/ec2-user/html/index.php
+ dbcreds: /home/ec2-user/dbcreds
+ employees_sql: /home/ec2-user/html/employees.sql
+ owner: ec2-user
+ group: ec2-user

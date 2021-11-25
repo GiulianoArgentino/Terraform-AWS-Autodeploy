@@ -1,0 +1,6 @@
+---
+#build the docker files and deploy the web app
+- name: deploy the webapp with docker compose
+  community.docker.docker_compose:
+    project_src: "{{webapp_project_path}}"
+    restarted: yes
